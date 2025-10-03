@@ -1,0 +1,525 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+	<title>DRISTI</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="assets/css/main.css" />
+</head>
+
+<body class="is-preload">
+
+	<!-- Wrapper -->
+	<div id="wrapper">
+
+		<!-- Main -->
+		<div id="main">
+			<div class="inner">
+
+				<!-- Header -->
+				<header id="header">
+					<a href="index.html" class="logo"><strong>Manual: DRISTI </strong> by Sunil Bogati</a>
+					<ul class="icons">
+						<li><a href="https://x.com/techguruguides?t=zIp79YtOA5RcSMJfq60R_w&s=09"
+								class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+						<li><a href="https://www.linkedin.com/in/bogatisunil9843569716/"
+								class="icon brands fa-linkedin"><span class="label">Linkedin</span></a></li>
+					</ul>
+				</header>
+
+				<!-- Content -->
+				<section>
+					<header class="main">
+						<h1>Manual: Extreme Rainfall Monitoring System (ERMS)</h1>
+					</header>
+					
+
+					<!-- Intro Image placeholder -->
+					<span class="image main"><img src="images/ERMS/ERMS DRISTI main.png"
+							alt="ERMS Introduction Image" /></span>
+
+					<!-- Introduction to ERMS in English -->
+					<section id="erms-workflow">
+						<header class="major">
+							<h2>Extreme Rainfall Monitoring System</h2>
+						</header>
+
+					<p>
+						The Extreme Rainfall Monitoring System (ERMS) is an experimental tool that provides estimated
+						locations of potential or ongoing extreme rainfall and their possible impacts, based on the
+						selected date using a 5-day forecast (GFS) and 5-day historical data (IMERG).
+					</p>
+
+					<section id="erms-layout">
+						<header class="major">
+							<h2>Layout</h2>
+						</header>
+					
+						<p>The user interface is divided into three main sections, each serving a distinct function for interaction and
+							visualization:</p>
+					
+						<table>
+							<thead>
+								<tr>
+									<th>UI Section</th>
+									<th>Description</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>🔵 <strong>Left Panel</strong></td>
+									<td>
+										Contains the <strong>MENU</strong> button, application title, and introduction. The <strong>IMERG
+											Result Panel</strong> (initially blank) is here, which later populates with affected
+										municipality details and sectoral impact data. Users can check relevant boxes to customize results
+										and reduce GEE computation limitations. Footer messaging is also included.
+									</td>
+								</tr>
+								<tr>
+									<td>🗺️ <strong>Center Map</strong></td>
+									<td>
+										A Nepal-centered map interface featuring:<br>
+										- Day slider<br>
+										- Number of days dropdown<br>
+										- Threshold selector<br>
+										- Method selection menu<br>
+										<br>
+										Pressing the <strong>"Render"</strong> button applies user parameters. Multiple map layers can be
+										toggled for enhanced visualization.
+									</td>
+								</tr>
+								<tr>
+									<td>🟠 <strong>Right Panel</strong></td>
+									<td>
+										Displays the <strong>Legend</strong> and the <strong>GFS Result Panel</strong> (similar to the IMERG
+										panel on the left). It dynamically updates with sectoral data. Footer message is also repeated here
+										for consistency.
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</section>
+					<br>
+					  
+					<section id="erms-workflow">
+						<header class="major">
+							<h2>🌐 ERMS Workflow Overview</h2>
+						</header>
+
+					<hr class="major" />
+						<title>Image Row</title>
+						<style>
+							.image-grid {
+								display: grid;
+								grid-template-columns: repeat(2, 1fr);
+								gap: 20px;
+								max-width: 1400px;
+								margin: 40px auto;
+								padding: 0 20px;
+							}
+						
+							.image-grid figure {
+								margin: 0;
+							}
+						
+							.image-grid img {
+								width: 100%;
+								height: auto;
+								border-radius: 8px;
+								box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+							}
+						
+							.image-grid figcaption {
+								text-align: center;
+								margin-top: 8px;
+								font-size: 0.95em;
+								color: #333;
+							}
+						
+							@media (max-width: 768px) {
+								.image-grid {
+									grid-template-columns: 1fr;
+								}
+							}
+						
+							</style>
+
+					
+							<div class="image-grid">
+								<figure>
+									<img src="images/ERMS/1 ERMS layout.png" alt="Image 1">
+									<figcaption>Figure 1: Initial App Layout and Controls</figcaption>
+								</figure>
+								<figure>
+									<img src="images/ERMS/2 ERMS 1st output.png" alt="Image 2">
+									<figcaption>Figure 2: Map Rendered and Results Panel Displayed after 'Render' Click</figcaption>
+								</figure>
+								<figure>
+									<img src="images/ERMS/2 ERMS 2nd output.png" alt="Image 3">
+									<figcaption>Figure 3: Sectorial Results Update after 'Checkboxes' Tick</figcaption>
+								</figure>
+							</div>
+
+							
+								<div class="content">
+							
+									<h3>🔹 Step 1: Initial App Layout and Controls</h3>
+									<p><strong>(Refer: Figure 1)</strong></p>
+									<p>The first screen shows the full layout of the ERMS application, consisting of three main sections:</p>
+							
+									<ul>
+										<li><strong>🟦 Left Panel</strong><br>
+											- <em>MENU</em> button, title, and brief introduction<br>
+											- <strong>IMERG Result Panel</strong> – placeholder that later displays affected municipalities and
+											sectoral impacts<br>
+											- Footer message for guidance or disclaimers
+										</li>
+										<li><strong>🗺️ Center Map View</strong><br>
+											- Interactive Nepal-centered map with:<br>
+											&nbsp;&nbsp;• Day slider<br>
+											&nbsp;&nbsp;• Number of days dropdown<br>
+											&nbsp;&nbsp;• Threshold selector<br>
+											&nbsp;&nbsp;• Method selection menu<br>
+											- <strong>"Render"</strong> button to trigger map generation<br>
+											- Supports multiple layer toggling
+										</li>
+										<li><strong>🟧 Right Panel</strong><br>
+											- Legends for map interpretation<br>
+											- <strong>GFS Result Panel</strong>, updated after rendering<br>
+											- Footer message
+										</li>
+									</ul>
+							
+									<blockquote>This step is where users configure parameters and prepare for data rendering.</blockquote>
+							
+									<h3>🔸 Step 2: Map Render and Results Panel</h3>
+									<p><strong>(Refer: Figure 2)</strong></p>
+									<ul>
+										<li>After clicking the <strong>"Render"</strong> button, the system processes input and:</li>
+										<ul>
+											<li>Displays rainfall and its intensity</li>
+											<li>Highlights likelihood of flooding and alert level</li>
+											<li>Activates IMERG and GFS Panels with result summaries: <strong>'Affected Palikas with different alert levels' </strong></li>
+											<li>Sectoral checkboxes appear for user interaction</li>
+										</ul>
+									</ul>
+							
+									<blockquote>This is the core visualization phase showing areas at risk and potential impacts.</blockquote>
+							
+									<h3>🔸 Step 3: Sectorial Results Update</h3>
+									<p><strong>(Refer: Figure 3)</strong></p>
+									<ul>
+										<li>When users select sectoral checkboxes, the Results Panel dynamically updates to show:</li>
+										<ul>
+											<li><strong>Vulnerable populations:</strong> elderly, disabled, and children</li>
+											<li><strong>Exposure:</strong> crops, buildings, drinking water, toilets</li>
+										</ul>
+									</ul>
+							
+									<blockquote>This interactive step enables customized impact analysis based on user interest and concern.
+									</blockquote>
+							
+									<h3>✅ Summary</h3>
+									<p>The ERMS workflow follows a clear logic:</p>
+									<p><strong>Input Selection (date, days, threshold, method and render) → Data Rendering (Updated maps and affected palikas) → Interactive Analysis (sectorial impacts based on clicked checkboxes)</strong></p>
+							
+									<p>This allows users to:</p>
+									<ul>
+										<li>🌀 Monitor extreme rainfall and flood likelihood</li>
+										<li>🗺️ Visualize impacts in maps and descriptive summaries (alert levels 1, 2, and 3)</li>
+										<li>🧠 Explore hazard, exposure, and vulnerability interactively</li>
+										<li>🧭 Make informed decisions based on real-time geospatial risk data</li>
+									</ul>
+								</div>
+							</section>
+							  
+
+					<!-- Left Panel content -->
+					<style>	
+					.image-row {
+						display: flex;
+						justify-content: space-between;
+						gap: 1rem;
+						flex-wrap: wrap;
+						}
+						
+						.image-row figure {
+						flex: 1;
+						min-width: 250px;
+						text-align: center;
+						}
+						
+						.image-row img {
+						width: 100%;
+						height: auto;
+						border-radius: 8px;
+						}
+						  
+					</style>
+
+					<section id="erms-images">
+						<header class="major">
+							<h2>Left Panel – IMERG</h2>
+						</header>
+					
+						<div class="image-row">
+							<figure>
+								<img src="images\ERMS\ERMS IMERG 1.png" alt="Initial Layout">
+								<figcaption>Figure 1: Left Panel Initial Layout </figcaption>
+							</figure>
+							<figure>
+								<img src="images\ERMS\ERMS IMERG 2.png" alt="Map Rendered">
+								<figcaption>Figure 2: Left Panel affected palika Rendered after 'Render' Click</figcaption>
+							</figure>
+							<figure>
+								<img src="images\ERMS\ERMS IMERG 3.png" alt="Updated Panel">
+								<figcaption>Figure 3: Updating Left Panel after checkboxes tick</figcaption>
+							</figure>
+						</div>
+					</section>
+					  
+					  
+					<div style="border:1px solid #ccc; padding:10px; margin-bottom: 1em;">
+						<button id="menuButton" style="font-weight:bold; padding:5px 10px;">MENU</button>
+						<h3>Extreme Rainfall Monitoring System</h3>
+						<p>The Extreme Rainfall Monitoring System (ERMS) is an experimental tool that provides estimated
+							locations of potential or ongoing extreme rainfall based on the selected date using 3-day
+							forecast (GFS) and 3-day historical data (IMERG).</p>
+						<hr />
+						<h4>IMERG Actual Environment</h4>
+						<p><strong>!!! Please select Date, Day, and Threshold then click the Render button</strong></p>
+
+						<!-- IMERG Affected Palika & Sectorial Impact Checkboxes -->
+						<div id="imergAffectedPalikas"
+							style="max-height: 250px; overflow-y: auto; border: 1px solid #aaa; padding: 5px; margin-top: 10px;">
+							<!-- Example populated dynamically -->
+							<strong>🏘 Affected Municipalities (IMERG)</strong><br />
+							<ul>
+								<li><input type="checkbox" id="imergPalika1" name="imergPalika" /> Bagmati Province -
+									Chitwan - Chitwan National Park</li>
+								<li><input type="checkbox" id="imergPalika2" name="imergPalika" /> Gandaki Province -
+									Nawalparasi East - Madhyabindu Municipality</li>
+							</ul>
+						</div>
+
+						<h4>Sectorial Impacts (Vulnerability and Exposure)</h4>
+						<ul style="list-style:none; padding-left:0;">
+							<li><input type="checkbox" id="affectedElderly" /> 👴 Affected Elderly</li>
+							<li><input type="checkbox" id="affectedChildren" /> 🧒 Affected Children</li>
+							<li><input type="checkbox" id="affectedDisabled" /> ♿ Affected Persons with Disabilities
+							</li>
+							<li><input type="checkbox" id="affectedWater" /> 🚰 Affected Drinking Water Households</li>
+							<li><input type="checkbox" id="affectedToilet" /> 🚽 Affected Toilet Households</li>
+							<li><input type="checkbox" id="affectedHomes" /> 🏠 Affected Vulnerable Households</li>
+						</ul>
+
+						<p><em>!!! Please only check after results are published in the Admin Panel due to system
+								limitations.</em></p>
+
+						<hr />
+						<p><strong>Photos of IMERG affected areas:</strong></p>
+						<img src="images/ERMS/IMERG_affected_area_placeholder.png" alt="IMERG Affected Area Image"
+							style="max-width:100%; height:auto; border: 1px solid #ccc;" />
+					</div>
+
+					<hr class="major" />
+
+					<!-- Center Map Panel -->
+					<h2>Center Panel – Map Interaction (🗺️)</h2>
+					<p>The map includes the following:</p>
+					<ul>
+						<li>Nepal-centered grey base map</li>
+						<li>Day slider, number of days selection, threshold selection</li>
+						<li>Method selection (Focal Linear, Soil Moisture Index, Elevation Rule)</li>
+						<li>Render button to start analysis</li>
+						<li>Map layers: IMERG, GFS, Flood Alert, Likelihood, Rainfall, etc.</li>
+					</ul>
+
+					<div style="border: 1px solid #aaa; height: 400px; margin-top: 1em;">
+						<!-- Map Placeholder -->
+						<p style="text-align:center; line-height:400px; color:#999;">[ Map Panel Placeholder ]</p>
+					</div>
+
+					<hr class="major" />
+
+					<!-- Right Panel -->
+					<h2>Right Panel – Legend & GFS Summary (🟠)</h2>
+						<div class="image-row">
+							<figure>
+								<img src="images\ERMS\ERMS GFS 1.png" alt="Initial Layout">
+								<figcaption>Figure 1: Right Panel Initial Layout </figcaption>
+							</figure>
+							<figure>
+								<img src="images\ERMS\ERMS GFS 2.png" alt="Map Rendered">
+								<figcaption>Figure 2: Right Panel affected palika Rendered after 'Render' Click</figcaption>
+							</figure>
+							<figure>
+								<img src="images\ERMS\ERMS GFS 3.png" alt="Updated Panel">
+								<figcaption>Figure 3: Updated Right Panel after checkboxes tick</figcaption>
+							</figure>
+						</div>
+						<br>
+
+
+					<div style="border:1px solid #ccc; padding:10px; margin-bottom: 1em;">
+
+						<h3>Legend</h3>
+						<table>
+							<tbody>
+								<tr>
+									<td>Rain</td>
+									<td>No Rain</td>
+								</tr>
+								<tr>
+									<td>1 - 3 mm</td>
+									<td>4 - 10</td>
+								</tr>
+								<tr>
+									<td>11 - 20</td>
+									<td>21 - 30</td>
+								</tr>
+								<tr>
+									<td>31 - 40</td>
+									<td>41 - 60</td>
+								</tr>
+								<tr>
+									<td>61 - 80</td>
+									<td>81 - 100</td>
+								</tr>
+								<tr>
+									<td>101 - 120</td>
+									<td>121 - 150</td>
+								</tr>
+								<tr>
+									<td>151 - 200</td>
+									<td>&gt; 200</td>
+								</tr>
+							</tbody>
+						</table>
+
+						<h4>Rainfall Categories</h4>
+						<ul>
+							<li>Moderate</li>
+							<li>Heavy</li>
+							<li>Severe</li>
+							<li>Extreme</li>
+						</ul>
+
+						<h4>Likelihood</h4>
+						<ul>
+							<li>Low</li>
+							<li>Medium</li>
+							<li>High</li>
+						</ul>
+
+						<h4>Flood Warning</h4>
+						<ul>
+							<li>Green</li>
+							<li>Yellow (Category 1-3)</li>
+							<li>Orange (Category 4-6)</li>
+							<li>Red (Category 7-9)</li>
+						</ul>
+
+						<hr />
+
+						<h3>GFS Forecast</h3>
+						<p><strong>Potential impacts for 1 day, issued on 2025-07-08, region: Nepal (CHIRPS)</strong>
+						</p>
+						<hr />
+
+						<!-- GFS Affected Municipalities with checkboxes -->
+						<div id="gfsAffectedPalikas"
+							style="max-height: 250px; overflow-y: auto; border: 1px solid #aaa; padding: 5px; margin-top: 10px;">
+							<strong>🏘 Affected Municipalities (GFS)</strong><br />
+							<p>📌 Alert Level 3: 2</p>
+							<ul>
+								<li>Bagmati Province - Chitwan - Chitwan National Park <input type="checkbox"
+										id="gfsPalika1" /></li>
+								<li>Gandaki Province - Nawalparasi East - Chitwan National Park <input type="checkbox"
+										id="gfsPalika2" /></li>
+							</ul>
+							<p>📌 Alert Level 2: 1</p>
+							<ul>
+								<li>Bagmati Province - Kathmandu - Kathmandu Metropolitan City <input type="checkbox"
+										id="gfsPalika3" /></li>
+							</ul>
+						</div>
+
+						<h4>Sectorial Impact</h4>
+						<ul style="list-style:none; padding-left:0;">
+							<li><input type="checkbox" id="gfsAffectedElderly" /> 👴 Affected Elderly</li>
+							<li><input type="checkbox" id="gfsAffectedChildren" /> 🧒 Affected Children</li>
+							<li><input type="checkbox" id="gfsAffectedDisabled" /> ♿ Affected Persons with Disabilities
+							</li>
+							<li><input type="checkbox" id="gfsAffectedWater" /> 🚰 Affected Drinking Water Households
+							</li>
+							<li><input type="checkbox" id="gfsAffectedToilet" /> 🚽 Affected Toilet Households</li>
+							<li><input type="checkbox" id="gfsAffectedHomes" /> 🏠 Affected Vulnerable Households</li>
+						</ul>
+
+						<footer>
+							<p>Powered by DRISTI ERMS.</p>
+						</footer>
+					</div>
+
+				</section>
+			</div>
+		</div>
+
+		<!-- Sidebar -->
+		<div id="sidebar">
+			<div class="inner">
+
+				<!-- Menu -->
+				<nav id="menu">
+					<header class="major">
+						<h2>Menu</h2>
+					</header>
+					<ul>
+						<li><a href="index.html">Homepage</a></li>
+						<li><a href="erms.html">ERMS</a></li>
+						<li><a href="pdra.html">PDRA</a></li>
+						<li><a href="climex.html">Climex</a></li>
+						<li><a href="flood.html">Flood and Inundation (Histroy) </a></li>
+					</ul>
+				</nav>
+
+				<!-- Section -->
+				<section>
+					<header class="major">
+						<h2>Get in touch</h2>
+					</header>
+					<p>The APP© has been developed in Nepal for the Forecast-based Anticipatory Action (FbAA) project in Google Earth
+						Engine.
+						For any questions/inquiries, please contact: </p>
+					<ul class="contact">
+						<li class="icon solid fa-envelope"><a href="#">dristiproject.2024@gmail.com</a></li>
+					</ul>
+				</section>
+				
+				<!-- Footer -->
+				<footer id="footer">
+					<p>This is tutorial of an experimental Tool which are subject to error; use the tools with caution.</p>
+					</footer>
+
+				<!-- Footer
+				<footer id="footer">
+					<p class="copyright">&copy; 2025 Sunil Bogati. All rights reserved.</p>
+				</footer> -->
+
+			</div>
+		</div>
+
+	</div>
+
+	<!-- Scripts -->
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="assets/js/browser.min.js"></script>
+	<script src="assets/js/breakpoints.min.js"></script>
+	<script src="assets/js/util.js"></script>
+	<script src="assets/js/main.js"></script>
+
+</body>
+
+</html>
